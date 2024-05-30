@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2463910256193207322}
   - component: {fileID: 6568587602532190254}
   - component: {fileID: 6402461997911307430}
+  - component: {fileID: -1598536536078004596}
+  - component: {fileID: 4688058704185460988}
   m_Layer: 0
   m_Name: NetSpawnObj
   m_TagString: Untagged
@@ -63,6 +65,41 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1598536536078004596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6003494680541780875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 3386797418
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
+--- !u!114 &4688058704185460988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6003494680541780875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1d1e7320f7cb4697777158b4dabea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  _destoryAfter: 10
+  _force: 1000
+  RigidBody_AtkObject: {fileID: 6568587602532190254}
 --- !u!1 &7511170337234852529
 GameObject:
   m_ObjectHideFlags: 0

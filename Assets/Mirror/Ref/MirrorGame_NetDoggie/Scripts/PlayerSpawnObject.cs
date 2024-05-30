@@ -25,9 +25,16 @@ public class PlayerSpawnObject : NetworkBehaviour
 
     public void Update()
     {
+        string netTypeStr = isClient ? "클라" : "클라아님";
+
+        TextMesh_NetType.text = this.isLocalPlayer ? $"[로컬/{netTypeStr}]{this.netId}" 
+            : $"[로컬아님/{netTypeStr}]{this.netId}";
+        
         SetHealthBarOnUpdate(_health);
+
         if (CheckIsFocusedOnUpdate() == false)
             return;
+
         CheckIsLocalPlayerOnUpdate();
     }
     private void SetHealthBarOnUpdate(int health)
@@ -79,6 +86,7 @@ public class PlayerSpawnObject : NetworkBehaviour
     {
         GameObject atkObjectForSpawn = Instantiate(Prefab_AtkObject, Transform_AtkSpawnPos.transform.position, Transform_AtkSpawnPos.transform.rotation);
         NetworkServer.Spawn(atkObjectForSpawn); // 공격한 오브젝트가 서버에 동기화가 되어야 하는데 클라 뿐만 아니라 서버
+        RpcOnAtk();
     }
 
     [ClientRpc]//언제 들어오는지 파악해야함 > 어택을 한 애의 RPC함수를 호출해서 쏴 줌
@@ -93,7 +101,7 @@ public class PlayerSpawnObject : NetworkBehaviour
     //클라에서 다음함수가 실행되지 않도록 ServerCallback을 달아줌
     private void OnTriggerEnter(Collider other) //서버 클라 둘다 불러질 수 있어서 클라에서는 실행되지 않도록 하기 위함
     {
-        var atkGenObject = other.GetComponent<>();
+        var atkGenObject = other.GetComponent<AttackSpawnObject>();
         if (atkGenObject == null)
             return;
 
